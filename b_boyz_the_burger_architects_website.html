@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B Boyz The Burger Architects | Gourmet Halal Smash Burgers East York</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#FF1E27',
+                            redHover: '#E0121A',
+                            amber: '#FFB800',
+                            darkBg: '#0D0D0E',
+                            cardBg: '#18181B',
+                            cardBorder: '#27272A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D0D0E;
+            color: #F4F4F5;
+        }
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(255, 30, 39, 0.6), 0 0 20px rgba(255, 30, 39, 0.4);
+        }
+        .amber-glow {
+            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(255, 30, 39, 0.15);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D0D0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF1E27;
+        }
+    </style>
+</head>
+<body class="bg-brand-darkBg text-zinc-100 min-h-screen flex flex-col justify-between antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Sticky Header Navbar -->
+    <header class="sticky top-0 z-50 bg-brand-darkBg/90 backdrop-blur-md border-b border-brand-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-brand-red flex items-center justify-center font-display font-bold text-xl text-white shadow-lg group-hover:bg-brand-redHover transition-colors">
+                    BB
+                </div>
+                <div>
+                    <span class="font-display text-2xl font-bold tracking-wider text-white block leading-none">B BOYZ</span>
+                    <span class="text-xs text-brand-amber tracking-widest font-semibold uppercase block">The Burger Architects</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-zinc-300">
+                <a href="#about" class="hover:text-brand-red transition-colors">About</a>
+                <a href="#menu" class="hover:text-brand-red transition-colors">Menu Highlights</a>
+                <a href="#reviews" class="hover:text-brand-red transition-colors">Reviews</a>
+                <a href="#location" class="hover:text-brand-red transition-colors">Location & Hours</a>
+            </nav>
+
+            <!-- CTA Action Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="tel:4164220800" class="px-4 py-2 rounded-lg border border-brand-cardBorder text-sm font-semibold hover:border-brand-amber hover:text-brand-amber transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-brand-amber"></i> (416) 422-0800
+                </a>
+                <a href="#order" class="px-5 py-2 rounded-lg bg-brand-red text-white text-sm font-bold shadow-lg shadow-brand-red/20 hover:bg-brand-redHover transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping"></i> Order Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-cardBorder bg-brand-darkBg px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">About Us</a>
+            <a href="#menu" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Menu Highlights</a>
+            <a href="#reviews" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Reviews</a>
+            <a href="#location" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Location & Hours</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <a href="tel:4164220800" class="w-full text-center py-2.5 rounded-lg border border-brand-cardBorder text-sm font-semibold text-brand-amber">
+                    <i class="fa-solid fa-phone mr-2"></i> (416) 422-0800
+                </a>
+                <a href="#order" class="w-full text-center py-2.5 rounded-lg bg-brand-red text-white text-sm font-bold shadow-md">
+                    <i class="fa-solid fa-bag-shopping mr-2"></i> Order Online
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 px-4">
+        <!-- Background Overlay Image & Glow -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-25 filter blur-sm"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkBg via-brand-darkBg/80 to-transparent"></div>
+        
+        <div class="relative max-w-5xl mx-auto text-center z-10 space-y-6">
+            
+            <!-- Halal & Rating Badges -->
+            <div class="inline-flex flex-wrap justify-center items-center gap-3 bg-zinc-900/90 border border-brand-cardBorder px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
+                <span class="text-emerald-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halal text-base"></i> 100% Certified Halal
+                </span>
+                <span class="text-zinc-600">•</span>
+                <span class="text-brand-amber flex items-center gap-1">
+                    <i class="fa-solid fa-star"></i> 4.5 Stars (789+ Reviews)
+                </span>
+                <span class="text-zinc-600">•</span>
+                <span class="text-zinc-300">
+                    <i class="fa-solid fa-location-dot text-brand-red mr-1"></i> East York, Toronto
+                </span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none">
+                B BOYZ <br class="sm:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-brand-amber neon-glow">
+                    THE BURGER ARCHITECTS
+                </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-2xl text-zinc-300 font-light max-w-3xl mx-auto leading-relaxed">
+                Engineering Toronto's most flavorful smash burgers, juicy zesty fried chicken, and loaded fries crafted with master precision.
+            </p>
+
+            <!-- Price & Info Badges -->
+            <div class="flex flex-wrap justify-center items-center gap-4 text-sm text-zinc-400 pt-2">
+                <span class="bg-brand-cardBg px-3 py-1.5 rounded-md border border-brand-cardBorder"><i class="fa-solid fa-dollar-sign text-emerald-400"></i> $10–$20 per person</span>
+                <span class="bg-brand-cardBg px-3 py-1.5 rounded-md border border-brand-cardBorder"><i class="fa-solid fa-seedling text-emerald-400"></i> Vegetarian Options</span>
+                <span class="bg-brand-cardBg px-3 py-1.5 rounded-md border border-brand-cardBorder"><i class="fa-solid fa-child text-brand-amber"></i> Kids' Menu</span>
+            </div>
+
+            <!-- Call to Actions -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-red text-white font-bold text-lg shadow-xl shadow-brand-red/30 hover:bg-brand-redHover transition-all hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-utensils"></i> View Full Menu
+                </a>
+                <a href="#order" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-zinc-900 border border-brand-cardBorder text-white font-bold text-lg hover:border-brand-amber hover:text-brand-amber transition-all hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-motorcycle text-brand-amber"></i> Pickup & Delivery
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quick Info Bar Banner -->
+    <section class="bg-brand-cardBg border-y border-brand-cardBorder py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
+                
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red text-xl">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase text-zinc-400 font-semibold tracking-wider">Hours</h4>
+                        <p class="text-sm font-bold text-emerald-400">Open Daily • Closes 1:00 AM</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-amber/10 border border-brand-amber/20 flex items-center justify-center text-brand-amber text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase text-zinc-400 font-semibold tracking-wider">Direct Phone</h4>
+                        <a href="tel:4164220800" class="text-sm font-bold text-white hover:text-brand-amber transition-colors">(416) 422-0800</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase text-zinc-400 font-semibold tracking-wider">Location</h4>
+                        <p class="text-sm font-bold text-white">25 Overlea Blvd, East York</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase text-zinc-400 font-semibold tracking-wider">Dietary Standards</h4>
+                        <p class="text-sm font-bold text-white">100% Certified Halal Food</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Highlights Section -->
+    <section id="menu" class="py-20 px-4 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+            <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide">
+                Architectural <span class="text-brand-red">Menu Highlights</span>
+            </h2>
+            <p class="text-zinc-400">
+                Every recipe built from the ground up using premium beef smash patties, crispy seasoned fried chicken, and artisan buns.
+            </p>
+
+            <!-- Filter Buttons -->
+            <div id="menu-filters" class="flex flex-wrap justify-center gap-2 pt-6">
+                <button data-filter="all" class="menu-tab-btn active px-5 py-2 rounded-full text-sm font-bold bg-brand-red text-white transition-all">All Items</button>
+                <button data-filter="burgers" class="menu-tab-btn px-5 py-2 rounded-full text-sm font-bold bg-brand-cardBg text-zinc-400 hover:text-white border border-brand-cardBorder transition-all">Smash Burgers</button>
+                <button data-filter="chicken" class="menu-tab-btn px-5 py-2 rounded-full text-sm font-bold bg-brand-cardBg text-zinc-400 hover:text-white border border-brand-cardBorder transition-all">Chicken</button>
+                <button data-filter="sides" class="menu-tab-btn px-5 py-2 rounded-full text-sm font-bold bg-brand-cardBg text-zinc-400 hover:text-white border border-brand-cardBorder transition-all">Sides & Poutine</button>
+                <button data-filter="desserts" class="menu-tab-btn px-5 py-2 rounded-full text-sm font-bold bg-brand-cardBg text-zinc-400 hover:text-white border border-brand-cardBorder transition-all">Milkshakes & Desserts</button>
+            </div>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+
+            <!-- Item 1 -->
+            <div class="menu-item burgers bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80" alt="Cheese Grenade Burger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 right-3 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Top Seller</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Cheese Grenade Combo</h3>
+                            <span class="text-brand-amber font-bold text-xl">$16.99</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Signature smash burger loaded with melted cheddar, topped with a warm liquid cheese pour. Served with fresh combo fries.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-item burgers bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&q=80" alt="Double Classic Burger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Double Classic & Fries</h3>
+                            <span class="text-brand-amber font-bold text-xl">$14.99</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Two juicy 100% Halal beef smash patties, classic American cheese, house sauce, pickles, and crisp lettuce on a toasted bun.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-item chicken bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&q=80" alt="Zesty Fried Chicken Burger Combo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 right-3 bg-brand-amber text-zinc-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Fan Favorite</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Zesty Fried Chicken Combo</h3>
+                            <span class="text-brand-amber font-bold text-xl">$15.49</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Crispy buttermilk fried chicken breast, spicy zesty glaze, house slaw, and pickles. Served with hot crispy fries.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-item chicken bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&q=80" alt="Grilled Chicken Burger with Cheese" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Grilled Chicken Cheese</h3>
+                            <span class="text-brand-amber font-bold text-xl">$13.99</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Marinated flame-grilled chicken breast, melted cheese slice, tomato, crisp lettuce, and signature herb mayo.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="menu-item sides bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&q=80" alt="Sweet Potato Fries & Poutine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Loaded Poutine & Sweet Fries</h3>
+                            <span class="text-brand-amber font-bold text-xl">$7.99</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Crispy golden sweet potato fries or classic Canadian poutine loaded with fresh cheese curds and rich hot beef gravy.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="menu-item desserts bg-brand-cardBg rounded-2xl border border-brand-cardBorder overflow-hidden hover:border-brand-red/50 transition-all duration-300 flex flex-col justify-between group">
+                <div class="relative h-48 overflow-hidden bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80" alt="Oreo Milkshake & Red Velvet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-white">Oreo Shake & Red Velvet</h3>
+                            <span class="text-brand-amber font-bold text-xl">$6.99</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Hand-spun real ice cream Oreo Milkshake alongside our famous moist Buttermilk Red Velvet slice dessert.
+                        </p>
+                    </div>
+                    <button class="w-full py-2.5 rounded-lg border border-brand-cardBorder hover:bg-brand-red hover:border-brand-red text-sm font-semibold transition-all">Add to Order</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-zinc-900/50 border-y border-brand-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Rating Banner -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 bg-brand-cardBg p-8 rounded-2xl border border-brand-cardBorder">
+                <div class="flex items-center gap-6">
+                    <div class="text-center">
+                        <span class="font-display text-6xl font-black text-white block">4.5</span>
+                        <div class="text-brand-amber flex gap-1 text-sm justify-center mt-1">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Google Certified Rating</h3>
+                        <p class="text-zinc-400 text-sm">Based on 789+ Verified Customer Reviews</p>
+                    </div>
+                </div>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl border border-brand-cardBorder hover:border-white text-sm font-bold flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-google text-brand-red"></i> Rate & Review Us
+                </a>
+            </div>
+
+            <!-- Review Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-brand-cardBg p-6 rounded-xl border border-brand-cardBorder relative flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-amber flex gap-1 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-zinc-300 italic text-sm leading-relaxed">
+                            "Best service and food was great quantity and quality wise. B Boyz never misses when you crave a solid halal smash burger!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-2 border-t border-zinc-800">
+                        <div class="w-8 h-8 rounded-full bg-brand-red/20 text-brand-red flex items-center justify-center font-bold text-xs">AR</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Ahmed R.</h4>
+                            <span class="text-[10px] text-zinc-500">Google Local Guide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cardBg p-6 rounded-xl border border-brand-cardBorder relative flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-amber flex gap-1 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-zinc-300 italic text-sm leading-relaxed">
+                            "The burger was juicy and flavorful, with fresh toppings and a soft, sturdy bun that held up to the cheese overload."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-2 border-t border-zinc-800">
+                        <div class="w-8 h-8 rounded-full bg-brand-amber/20 text-brand-amber flex items-center justify-center font-bold text-xs">MS</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Mariam S.</h4>
+                            <span class="text-[10px] text-zinc-500">Google Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cardBg p-6 rounded-xl border border-brand-cardBorder relative flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-amber flex gap-1 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-zinc-300 italic text-sm leading-relaxed">
+                            "I'm a regular at the place and they really have the best burgers in the town. Fast service and always served scorching hot."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-2 border-t border-zinc-800">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">TK</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Tariq K.</h4>
+                            <span class="text-[10px] text-zinc-500">Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Location, Ordering & Hours Section -->
+    <section id="location" class="py-20 px-4 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <!-- Left Info Column -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide">
+                        Visit or <span class="text-brand-red">Order Online</span>
+                    </h2>
+                    <p class="text-zinc-400 mt-2">
+                        Located in the heart of East York on Overlea Blvd. Drop by for fresh off the grill takeout or get it delivered straight to your door.
+                    </p>
+                </div>
+
+                <!-- Order Action Card -->
+                <div id="order" class="bg-gradient-to-br from-brand-cardBg to-zinc-900 p-8 rounded-2xl border border-brand-cardBorder space-y-6">
+                    <h3 class="font-display text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-motorcycle text-brand-red"></i> Delivery & Pickup Partners
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-zinc-800 border border-brand-cardBorder hover:border-emerald-500 text-center transition-all group">
+                            <span class="font-bold block text-white group-hover:text-emerald-400">Uber Eats</span>
+                            <span class="text-xs text-zinc-400">Order Delivery Online</span>
+                        </a>
+                        <a href="tel:4164220800" class="p-4 rounded-xl bg-zinc-800 border border-brand-cardBorder hover:border-brand-amber text-center transition-all group">
+                            <span class="font-bold block text-white group-hover:text-brand-amber">Call For Pickup</span>
+                            <span class="text-xs text-zinc-400">(416) 422-0800</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hours Breakdown -->
+                <div class="bg-brand-cardBg p-8 rounded-2xl border border-brand-cardBorder space-y-4">
+                    <h3 class="font-display text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-brand-amber"></i> Opening Hours
+                    </h3>
+                    <ul class="space-y-2 text-sm text-zinc-300">
+                        <li class="flex justify-between py-1.5 border-b border-zinc-800">
+                            <span>Monday – Thursday</span>
+                            <span class="font-bold text-emerald-400">12:00 PM – 1:00 AM</span>
+                        </li>
+                        <li class="flex justify-between py-1.5 border-b border-zinc-800">
+                            <span>Friday – Saturday</span>
+                            <span class="font-bold text-emerald-400">12:00 PM – 1:00 AM</span>
+                        </li>
+                        <li class="flex justify-between py-1.5">
+                            <span>Sunday</span>
+                            <span class="font-bold text-emerald-400">12:00 PM – 1:00 AM</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Right Column Map -->
+            <div class="bg-brand-cardBg p-4 rounded-2xl border border-brand-cardBorder h-full min-h-[400px] flex flex-col">
+                <div class="mb-4 px-2 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">B Boyz East York</h4>
+                        <p class="text-xs text-zinc-400">25 Overlea Blvd, East York, ON M4H 1P9</p>
+                    </div>
+                    <a href="https://maps.google.com/?q=25+Overlea+Blvd,+East+York,+ON+M4H+1P9" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-xs font-semibold rounded-lg text-brand-amber transition-colors">
+                        Open in Maps
+                    </a>
+                </div>
+                <!-- Embedded Responsive Google Map -->
+                <div class="w-full flex-1 rounded-xl overflow-hidden min-h-[350px]">
+                    <iframe 
+                        title="B Boyz Location Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.288921868469!2d-79.3512808234384!3d43.70451097109961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4ccf3e2ba012b%3A0xd689101f3fbbd6!2s25%20Overlea%20Blvd%2C%20East%20York%2C%20ON%20M4H%201P9!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca" 
+                        class="w-full h-full border-0 filter grayscale invert contrast-125 opacity-90" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Deploy Guide Modal/Section (Helpful toggle for user) -->
+    <section class="bg-zinc-950 border-t border-brand-cardBorder py-8 px-4">
+        <div class="max-w-4xl mx-auto bg-brand-cardBg/60 p-6 rounded-2xl border border-brand-cardBorder text-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h4 class="font-bold text-brand-amber flex items-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> Ready to publish this website for free with a Custom Domain?
+                </h4>
+                <button onclick="document.getElementById('deploy-guide').classList.toggle('hidden')" class="text-xs bg-zinc-800 px-3 py-1 rounded text-zinc-300 hover:text-white">Toggle Instructions</button>
+            </div>
+            <div id="deploy-guide" class="hidden space-y-3 text-zinc-300 border-t border-zinc-800 pt-4">
+                <p><strong>Step 1 (Cloudflare Pages):</strong> Sign up at <a href="https://dash.cloudflare.com" target="_blank" class="text-brand-red underline">Cloudflare.com</a> $\rightarrow$ Workers & Pages $\rightarrow$ Upload assets $\rightarrow$ Drag this <code class="text-amber-300">index.html</code> file.</p>
+                <p><strong>Step 2 (Custom Domain):</strong> In your Cloudflare Pages dashboard, click <em>Custom Domains</em>, type your domain name (e.g., <code class="text-amber-300">bboyzeastyork.com</code>), and confirm DNS records!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-darkBg border-t border-brand-cardBorder py-12 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 text-center sm:text-left">
+            <div>
+                <span class="font-display text-2xl font-bold tracking-wider text-white">B BOYZ</span>
+                <p class="text-xs text-zinc-500 mt-1">© 2026 B Boyz The Burger Architects. All Rights Reserved. 100% Certified Halal.</p>
+            </div>
+            <div class="flex gap-4 text-zinc-400">
+                <a href="https://instagram.com/bboyz_ca_" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-brand-cardBg flex items-center justify-center hover:text-brand-red hover:border-brand-red border border-brand-cardBorder transition-all">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="tel:4164220800" class="w-10 h-10 rounded-full bg-brand-cardBg flex items-center justify-center hover:text-brand-amber hover:border-brand-amber border border-brand-cardBorder transition-all">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Menu Tab Filtering Logic
+        const filterBtns = document.querySelectorAll('.menu-tab-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-red', 'text-white');
+                    b.classList.add('bg-brand-cardBg', 'text-zinc-400');
+                });
+
+                // Add active styling to clicked button
+                btn.classList.add('bg-brand-red', 'text-white');
+                btn.classList.remove('bg-brand-cardBg', 'text-zinc-400');
+
+                const filter = btn.getAttribute('data-filter');
+
+                menuItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
